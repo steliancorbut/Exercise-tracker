@@ -1,0 +1,39 @@
+html
+  head
+    title='Exercise Tracker'
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans')
+    link(type='text/css' rel='stylesheet' href='/stylesheets/index.css')
+
+  body
+    header
+      h1 Exercise Tracker
+    main
+      #new-user
+        h2p(class='bold') Create New User
+        p(class='example')  POST /api/exercise/new-user
+        form(action='/api/exercise/new-user' method='POST')
+          input(type='text' name='username' placeholder='username')
+          button(type='submit') Submit
+      #add-exercises
+        h2p(class='bold') Add Exercises
+        p(class='example')  POST /api/exercise/add
+        form(action='/api/exercise/add' method='POST')
+          input(type='text' name='_id' placeholder='user_id*' required)
+          input(type='text' name='description' placeholder='description*' required)
+          input(type='number' name='duration' placeholder='duration*(mins)' required)
+          input(type='date' name='date' placeholder='date (yyyy-mm-dd)')
+          button(type='submit') Submit
+      #info
+        div
+          p(class='bold') GET users's exercise log:
+          p(class='example normal') GET /api/exercise/log?{userId}[&from][&to][&limit]
+        div
+          p(class='bold') { }
+          p(class='normal')  = required,
+          p(class='bold')  [ ]
+          p(class='normal')  = optional
+        div
+          p(class='bold') from, to
+          p(class='normal')  = dates (yyyy-mm-dd);
+          p(class='bold')  limit
+          p(class='normal') = number
